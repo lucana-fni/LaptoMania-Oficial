@@ -1,0 +1,36 @@
+﻿body {
+    background-color: #f8f9fa;
+}
+
+.container {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+}
+
+.form-signin {
+    width: 100%;
+    max-width: 330px;
+    padding: 15px;
+    margin: auto;
+}
+
+    .form-signin .mb-3 {
+        margin-bottom: 20px;
+    }
+
+    .form-signin label {
+        font-weight: bold;
+    }
+
+    .form-signin input {
+        height: 40px;
+    }
+
+    .form-signin button {
+        height: 40px;
+    }
+
+.alert-danger {
+    margin-top: 20px;
+}

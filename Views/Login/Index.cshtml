@@ -1,0 +1,47 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>LOGIN</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <!--<link rel="stylesheet" href="~/css/login.css">-->
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-4"></div>
+            <div class="col-sm-4" style="padding-top: 100px">
+                <h1 class="h3 mb-3 fw-normal text-center">LOGIN</h1>
+                <h5 class="text-center">SISTEMA LAPTOMANIAOFICIAL</h5>
+                <form asp-controller="Login" asp-action="Login" method="post">
+                    <div class="mb-3">
+                        <label for="correo">Correo Electronico</label>
+                        <input type="email" id="correo" name="email" class="form-control" autocomplete="off" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="contrasena">Password</label>
+                        <input type="password" id="contrasena" name="password" class="form-control" required>
+                    </div>
+
+                    <button class="w-100 btn btn-lg btn-primary" type="submit">Ingresar al Sistema</button>
+                </form>
+                @if (TempData["LoginError"] != null)
+                {
+                    <div class="alert alert-danger">@TempData["LoginError"]</div>
+
+                }
+                <p class="mt-5 mb-3 text-muted">&copy; 2023</p>
+            </div>
+            <div class="col-sm-4"></div>
+        </div>
+    </div>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

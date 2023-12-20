@@ -1,0 +1,41 @@
+﻿@model IEnumerable<LaptoManiaOficial.Models.Equipo>
+
+@{
+    ViewData["Title"] = "equiposnodisponibles";
+}
+
+<h2>EQUIPOS DISPONIBLES</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Código</th>
+            <th>Marca</th>
+            <th>Modelo</th>
+            <th>Precio</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Codigo)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Marca)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Modelo)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Precio)
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+
+
+

@@ -1,0 +1,105 @@
+﻿@model LaptoManiaOficial.Models.Venta
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>www.Laptopmania.bo</title>
+	<script src="~/js/qrcode.min.js"></script>
+	<script src="~/js/qr-code-generator.js"></script>
+
+    <link href="~/css/Printer.css" rel="stylesheet" />
+</head>
+<body onload="window.print()" onafterprint="history.back()">
+    <div class="contenedor onlyPrint">
+        <div style="text-align: center">
+            <h1>Recibo</h1>
+            <br />
+            <h3>Laptop Mania</h3>
+            <h3>venta de laptops</h3>
+     
+           
+        </div>
+        <label>Detalles</label>
+        <dl class="row">
+            <dd class="col-sm-10">
+                Fecha: @Html.DisplayFor(model => model.FechaVenta)
+            </dd>
+            <dd class="col-sm-10">
+                Nombre:  @Html.DisplayFor(model => model.Cliente!.NombreCompleto)
+            </dd>
+            <dd class="col-sm-10">
+                Ci:  @Html.DisplayFor(model => model.Cliente!.Ci)
+            </dd>
+
+            <br />
+            <dd class="col-sm-10">
+                Marca: @Html.DisplayFor(model => model.Equipo!.Marca)
+            </dd>
+
+            <dd class="col-sm-10">
+                Modelo: @Html.DisplayFor(model => model.Equipo!.Modelo)
+            </dd>
+            <dd class="col-sm-10">
+                Precio: @Html.DisplayFor(model => model.Equipo!.Precio)
+            </dd>
+
+           
+        </dl>
+        <p>El precio es: @ViewData["PrecioEnPalabras"]</p>
+        
+        
+        <p>
+            <small>@Html.DisplayFor(model => model.Usuario!.CorreoElectronico)</small>
+        </p>
+
+     
+        
+
+        <div id="qrcode"></div>
+
+        @{
+
+            string qr = String.Format("{0}|{1}|{2}|{3}",
+            Model.Cliente!.Ci,
+            Model.FechaVenta,
+            Model.Equipo!.Precio,
+            Model.Cliente.NombreCompleto
+            );
+        }
+
+
+        <script>
+            generateQRCode("qrcode", "@qr", 100, 100);
+        </script>
+
+        <h3>Gracias por su compra</h3>
+           <p>
+            <small>Este recibo no es válido para crédito fiscal</small>
+        </p>
+        <p>
+            <small>Guarde el recibo para cualquier queja u observación</small>
+        </p>
+
+    </div>
+
+   
+</body>
+</html>
+
+
+
+
+
+<div>
+    
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model?.Id">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

@@ -1,0 +1,85 @@
+﻿@model IEnumerable<LaptoManiaOficial.Models.Venta>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Fecha
+            </th>
+            <th>
+                Nombre Vendedor
+            </th>
+            <th>
+                Correo Electrónico 
+            </th>
+            <th>
+                Nombre Cliente
+            </th>
+            <th>
+                Carnet
+            </th>
+            <th>
+                Código Producto
+            </th>
+            <th>
+                Marca
+            </th>
+            <th>
+                Modelo
+            </th>
+            <th>
+                Precio
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @item.FechaVenta.ToString("yyyy-MM-dd")
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Usuario.NombreCompleto)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Usuario.CorreoElectronico)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Cliente.NombreCompleto)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Cliente.Ci)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Equipo.Codigo)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Equipo.Marca)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Equipo.Modelo)
+                </td>
+                <td>
+                    <!-- Asegúrate de tener una propiedad Precio en tu modelo Equipo -->
+                    @Html.DisplayFor(modelItem => item.Equipo.Precio)
+                </td>
+                <td>
+                    |
+                    <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                    
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
